@@ -1,4 +1,5 @@
 const http = require('http');
+const fibonacci = require('./fibonacci');
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -6,7 +7,7 @@ const port = 3000;
 const server = http.createServer((req, res) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello World\n');
+    res.end([...Array(10).keys()].map(i => i + 1).map(fibonacci).join(', ') + '\n');
 });
 
 server.listen(port, hostname, () => {
